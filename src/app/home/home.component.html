@@ -1,0 +1,37 @@
+<div class="home-container">
+  <header class="navbar">
+    <h1>Mi Aplicación de Login</h1>
+    <div class="user-info" *ngIf="user">
+      <span>Bienvenido, {{ user.first_name }} {{ user.last_name }}</span>
+      <button (click)="logout()" class="logout-btn">Cerrar Sesión</button>
+    </div>
+    <div class="user-info" *ngIf="!user">
+      <a routerLink="/login" class="login-btn">Iniciar Sesión</a>
+      <a routerLink="/register" class="register-btn">Registrarse</a>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div *ngIf="user" class="welcome-message">
+      <h2>¡Bienvenido a tu aplicación!</h2>
+      <div class="user-card">
+        
+        <div class="user-details">
+          <p><strong>Nombre:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+          <p><strong>Email:</strong> {{ user.email }}</p>
+          
+        </div>
+      </div>
+      <p>Has iniciado sesión correctamente en el sistema.</p>
+    </div>
+
+    <div *ngIf="!user" class="guest-message">
+      <h2>Bienvenido</h2>
+      <p>Por favor inicia sesión o regístrate para acceder al sistema.</p>
+      <div class="auth-buttons">
+        <a routerLink="/login" class="btn btn-primary">Iniciar Sesión</a>
+        <a routerLink="/register" class="btn btn-secondary">Registrarse</a>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,50 @@
+<div class="register">
+  <form class="custom-form" (ngSubmit)="register()">
+    <h1>Registro</h1>
+    
+    <div *ngIf="error" class="error-message">
+      {{ error }}
+    </div>
+
+    <input
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      placeholder="Email (usa: eve.holt@reqres.in)"
+      required
+    />
+
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Password (mínimo 6 caracteres)"
+      required
+      minlength="6"
+    />
+
+    <input
+      type="password"
+      [(ngModel)]="confirmPassword"
+      name="confirmPassword"
+      placeholder="Repetir Password"
+      required
+    />
+
+    <div *ngIf="passwordError" class="error-message">
+      Las contraseñas no coinciden
+    </div>
+
+    <button type="submit" [disabled]="loading">
+      {{ loading ? 'Registrando...' : 'Registro' }}
+    </button>
+
+    <p class="login-link">
+      ¿Ya tienes cuenta? <a routerLink="/login">Inicia sesión</a>
+    </p>
+
+    <div class="api-info">
+      <small>API de prueba: Usa eve.holt@reqres.in</small>
+    </div>
+  </form>
+</div>
