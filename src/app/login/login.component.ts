@@ -46,17 +46,12 @@ export class LoginComponent {
       password: this.password 
     };
 
-    this.userService.login(user).subscribe({
-      next: (data: any) => {
-        console.log('✅ LOGIN EXITOSO:', data);
-        this.loading = false;
-        
-        // Verificar que el token se guardó
-        const token = localStorage.getItem('token');
-        console.log('Token en localStorage:', token);
-        
-        this.router.navigate(['/']);
-      },
+     this.userService.login(user).subscribe({
+    next: (data: any) => {
+      console.log('✅ Login exitoso:', data);
+      this.loading = false;
+      this.router.navigate(['/home']); // Redirigir a home después del login
+    },
       error: (error: any) => {
         console.error('❌ ERROR EN LOGIN:', error);
         this.loading = false;
